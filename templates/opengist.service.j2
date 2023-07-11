@@ -1,0 +1,16 @@
+[Unit]
+Description=opengist
+Requires=docker.service
+After=docker.service
+
+[Service]
+Restart=always
+User={{ opengist_container_user }}
+Group=docker
+WorkingDirectory={{ opengist_host_config_path }}
+ExecStartPre=/usr/local/bin/docker-compose -f {{ opengist_host_config_path }}/docker-compose.yml down
+ExecStart=/usr/local/bin/docker-compose -f {{ opengist_host_config_path }}/docker-compose.yml up
+ExecStop=/usr/local/bin/docker-compose -f {{ opengist_host_config_path }}/docker-compose.yml down
+
+[Install]
+WantedBy=multi-user.target

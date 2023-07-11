@@ -1,0 +1,16 @@
+# {{ ansible_managed }}
+---
+version: "3"
+
+services:
+  opengist:
+    image: {{ opengist_image }}
+    container_name: opengist
+    restart: unless-stopped
+    environment:
+      UID: {{ created_uid }}
+      GID: {{ created_gid }}
+    ports:
+      - "{{ opengist_host_port }}:6157"
+    volumes:
+      - "{{ opengist_host_config_path }}:/opengist"
