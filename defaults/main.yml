@@ -1,5 +1,5 @@
 ---
-opengist_image: "ghcr.io/thomiceli/opengist:1.4"
+opengist_image: "ghcr.io/thomiceli/opengist:1"
 opengist_host_port: 6157
 opengist_host_config_path: /etc/opengist
 opengist_container_user: opengist
